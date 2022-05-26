@@ -1,0 +1,17 @@
+// HEADER
+.widget-header-logo {
+  svg {
+    @apply w-auto h-14 fill-white;
+  }
+}
+
+// FOOTER
+.widget-footer-mentions {
+  a {
+    @apply font-bold text-white;
+
+    &:hover {
+      @apply text-black;
+    }
+  }
+}

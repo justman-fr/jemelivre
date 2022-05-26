@@ -1,0 +1,25 @@
+div.form-contact {
+  form {
+    @apply w-full;
+
+    input {
+      @apply rounded-xl border-2 border-primary outline-none;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='tel'] {
+      @apply w-full px-4 rounded-full border-2 border-primary outline-none;
+    }
+
+    textarea {
+      @apply w-full h-36 border-2 border-primary outline-none rounded-2xl;
+    }
+
+    .choice {
+      input {
+        @apply mr-2;
+      }
+    }
+  }
+}

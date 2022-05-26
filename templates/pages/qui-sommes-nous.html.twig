@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 prose">
+        <h1>{{ content.title }}</h1>
+
+        {% include '@Block/html5-blocks.html.twig' %}
+
+        {% if content.valeurs is not empty %}
+            <h2>Nos valeurs</h2>
+            {% for valeur in content.valeurs %}
+                {{ valeur.titre }}
+                {{ valeur.contenu|raw }}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

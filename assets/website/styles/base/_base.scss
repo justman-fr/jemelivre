@@ -1,0 +1,7 @@
+html, body {
+  @apply font-sans font-light text-secondary;
+}
+
+h1, h2, h3 {
+  @apply mt-2 text-2xl leading-8 font-extrabold tracking-tight  sm:text-4xl font-serif;
+}

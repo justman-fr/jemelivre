@@ -1,0 +1,8 @@
+.coverSlide {
+  @apply bg-gris;
+  height: 600px;
+
+  img{
+    @apply object-cover w-full h-full;
+  }
+}

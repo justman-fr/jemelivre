@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>qui-sommes-nous</key>
+
+    <view>pages/qui-sommes-nous</view>
+    <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
+    <cacheLifetime>604800</cacheLifetime>
+
+    <meta>
+        <title lang="fr">Qui sommes nous</title>
+    </meta>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="fr">Titre</title>
+            </meta>
+            <params>
+                <param name="headline" value="true"/>
+            </params>
+
+            <tag name="sulu.rlp.part"/>
+        </property>
+
+        <property name="url" type="resource_locator" mandatory="true">
+            <meta>
+                <title lang="fr">Url</title>
+            </meta>
+
+            <tag name="sulu.rlp"/>
+        </property>
+
+        <section name="images">
+            <meta>
+                <title lang="fr">Bandeau</title>
+            </meta>
+            <properties>
+                <property name="cover" type="single_media_selection">
+                    <params>
+                        <param name="types" value="image"/>
+                    </params>
+                </property>
+            </properties>
+
+        </section>
+
+
+        <section name="content">
+            <meta>
+                <title lang="fr">Contenu</title>
+            </meta>
+            <properties>
+                <block name="blocks" default-type="text" minOccurs="0">
+
+                    <types>
+                        <xi:include href="sulu-block-bundle://blocks/text.xml"/>
+                        <xi:include href="sulu-block-bundle://blocks/youtube.xml"/>
+                        <xi:include href="sulu-block-bundle://blocks/link.xml"/>
+                        <xi:include href="sulu-block-bundle://blocks/images.xml"/>
+                        <xi:include href="sulu-block-bundle://blocks/image_title_subtitle_quote.xml"/>
+                        <xi:include href="sulu-block-bundle://blocks/image_text.xml"/>
+                    </types>
+                </block>
+            </properties>
+        </section>
+
+        <section name="valeurs">
+            <meta>
+                <title lang="fr">Nos valeurs</title>
+            </meta>
+            <properties>
+                <block name="valeurs" default-type="text_image" minOccurs="0">
+                    <types>
+                        <type name="text_image">
+                            <properties>
+                                <property name="titre" type="text_line" mandatory="true">
+                                    <meta>
+                                        <title>Titre de la valeur</title>
+                                    </meta>
+                                </property>
+                                <property name="contenu" type="text_editor">
+                                    <meta>
+                                        <title lang="fr">Contenu de la valeur</title>
+                                    </meta>
+                                </property>
+                                <property name="image" type="single_media_selection" mandatory="true">
+                                    <meta>
+                                        <title>Image</title>
+                                    </meta>
+                                </property>
+                            </properties>
+                        </type>
+                    </types>
+                </block>
+            </properties>
+        </section>
+    </properties>
+</template>

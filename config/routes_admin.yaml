@@ -1,0 +1,12 @@
+# Define your admin routes here
+social.settings_api:
+  type: rest
+  prefix: /admin/api
+  resource: pixel_social.settings_route_controller
+  name_prefix: social.
+
+company.setting_api:
+  type: rest
+  prefix: /admin/api
+  resource: pixel_company.settings_route_controller
+  name_prefix: company.

@@ -1,0 +1,45 @@
+/*
+MODULE POUR LES RÉSEAUX SOCIAUX
+Position: GLOBAL
+*/
+.social-list {
+  @apply flex flex-row gap-2;
+
+  a {
+    @apply w-10 h-10 rounded-full bg-white block flex items-center justify-center outline-none;
+
+    svg {
+      @apply w-4 h-4 fill-black;
+    }
+
+    &:hover {
+      @apply bg-black;
+
+      svg { @apply fill-white; }
+    }
+  }
+}
+
+/*
+MODULE POUR LES RÉSEAUX SOCIAUX
+Position: HEADER
+*/
+header .widget-social .socialTitle {
+  @apply hidden;
+}
+
+/*
+MODULE POUR LES RÉSEAUX SOCIAUX
+Position: OFFCANVAS
+*/
+.offcanvas .widget-social {
+  @apply w-full absolute bottom-0 p-6;
+
+  .socialTitle {
+    @apply hidden;
+  }
+
+  .social-list {
+    @apply w-full justify-center;
+  }
+}

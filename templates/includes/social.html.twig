@@ -1,0 +1,15 @@
+<span class="widget-social">
+    <p class="socialTitle"><span>Suivez-nous sur</span></p>
+
+    <ul class="social-list">
+        {% if socialSettings is defined %}
+            {% for socialMedia in socialSettings.socialMedias %}
+                <li>
+                    <a href="{{ socialMedia.socialMediaUrl }}" target="_blank">
+                        {{ social_media_logo(socialMedia.socialMediaName) }}
+                    </a>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</span>

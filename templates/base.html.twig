@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|split('_')[0] }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block meta %}
+        {% include 'includes/meta.html.twig' %}
+    {% endblock %}
+
+    {% block style %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body class="scroll-smooth {% block classBody %}{% endblock %}">
+    {% set socialSettings = social_settings() %}
+    <header>
+        {% block header %}
+            <div class="bg-white-600" x-data="{ fixedBar: false, mobileMenu: false }" :class="{ 'bg-white shadow transition duration-100 fixed w-full z-50' : fixedBar }" @scroll.window="fixedBar = (window.pageYOffset > 20) ? true : false">
+
+                {# ------------------------------- #}
+                {# HEADER PRINCIPAL #}
+                {# ------------------------------- #}
+                <div class="w-full ">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                        <div class="flex justify-start items-center py-6 xl:justify-between">
+                            <div class="-mr-2 -my-2 xl:hidden">
+                                <button type="button" @click="mobileMenu = !mobileMenu" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 mr-4" aria-expanded="false">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                                </button>
+                            </div>
+                            {{ include('includes/logo.html.twig') }}
+                            {{ include('includes/menu.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+                {# ------------------------------- #}
+                {# HEADER OFFCANVAS #}
+                {# ------------------------------- #}
+                {{ include('includes/menuMobile.html.twig') }}
+
+            </div>
+        {% endblock %}
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        {% block footer %}
+            {# ------------------------------- #}
+            {# FOOTER PRINCIPAL #}
+            {# ------------------------------- #}
+            <div class="w-full bg-gris">
+                <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6">
+                    <div class="flex justify-between">
+                        <div>
+                            {% include 'includes/logo.html.twig' %}
+                        </div>
+                        <div>
+                            {% include 'includes/infosSociete.html.twig' %}
+                        </div>
+                        <div>
+                            {% include 'includes/menuFooter.html.twig' %}
+                        </div>
+                        <div>
+                            {% include 'includes/social.html.twig' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {# ------------------------------- #}
+            {# FOOTER SECONDAIRE #}
+            {# ------------------------------- #}
+            <div class="w-full bg-black">
+                <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6">
+                    <div class="widget-footer-mentions">
+                        {% include 'includes/menuFooterSecondaire.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </footer>
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</body>
+</html>

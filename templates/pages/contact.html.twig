@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="cover w-full h-80">
+        {% if content.imagePresentation is defined %}
+            {% set image = sulu_resolve_media(content.imagePresentation, 'fr') %}
+            <img src="{{ image.thumbnails['sulu-400x400'] }}" alt="{{ image.title }}" class="w-full h-full object-cover object-center"/>
+        {% endif %}
+    </div>
+    <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 prose">
+        <h1>Nous contacter</h1>
+
+        {{ content.contentPresentation|raw }}
+
+        <div class="flex justify-between bg-gris rounded-2xl p-6 gap-6">
+            <div>
+                {{ content.coord|raw }}
+            </div>
+            <div>
+                <div class="form-contact">
+                    {% if content.form %}
+                        {% if app.request.get('send') != 'true' %}
+                            {# FORM THEME #}
+                            {% form_theme content.form '@SuluForm/themes/basic.html.twig' %}
+                            {{ form(content.form) }}
+                        {% else %}
+                            {{ view.form.entity.successText|raw }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

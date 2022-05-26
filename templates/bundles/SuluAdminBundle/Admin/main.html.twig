@@ -1,0 +1,11 @@
+{% extends "@!SuluAdmin/Admin/main.html.twig" %}
+
+{% block title %}
+    Administration {{ project_name }}
+{% endblock %}
+
+ {% block style %}
+     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon-admin.ico') }}" />
+     {{ parent() }}
+
+ {% endblock %}

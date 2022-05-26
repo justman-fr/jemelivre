@@ -1,0 +1,77 @@
+<div class="offcanvas fixed inset-0 overflow-hidden transition z-50" aria-labelledby="slide-over-title" role="dialog" aria-modal="true"
+     x-show="mobileMenu"
+     x-cloak
+>
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-75 transition-opacity" aria-hidden="true"
+             x-show="mobileMenu"
+             x-cloak
+             x-transition:enter="ease-in-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+             x-transition:leave="ease-in-out duration-500" x-transition:leave-start="opacity-100 " x-transition:leave-end="opacity-0"
+        ></div>
+        <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div class="pointer-events-auto relative w-screen max-w-md transform transition"
+                 x-show="mobileMenu"
+                 x-cloak
+                 x-transition:enter="ease-in-out duration-500" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+                 x-transition:leave="ease-in-out duration-500" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
+            >
+                <div class="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4"
+                     x-show="mobileMenu"
+                     x-cloak
+                     x-transition:enter="ease-in-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                     x-transition:leave="ease-in-out duration-500" x-transition:leave-start="opacity-100 " x-transition:leave-end="opacity-0"
+                >
+                    <button @click="mobileMenu = !mobileMenu"  type="button" class="rounded-md text-white hover:text-abricot focus:outline-none focus:ring-2 focus:ring-white">
+                        <span class="sr-only">Fermer le menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="flex h-full flex-col overflow-hidden overflow-y-auto bg-white shadow-xl ">
+                    {{ include('/includes/logoMobile.html.twig') }}
+
+                    <div class="relative mt-6 flex-1 px-4 sm:px-6">
+                        <!-- Replace with your content -->
+                        <ul class="menuMobile divide-y divide-gris mt-8">
+                            {% for item in sulu_navigation_root_tree('main', 2) %}
+                                {% if item.children and item.children|length > 0 %}
+                                    <li x-data="{ mobileSubmenu: false }" class="">
+                                        <span @click="mobileSubmenu = !mobileSubmenu" class="flex py-3 px-2 block hover:bg-abricot hover:text-white cursor-pointer">
+                                            {{ item.title }}
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                                        </span>
+                                        <div class="mt-8 absolute top-0 right-0 w-full h-screen bg-white translate-x-0 transform duration-300 px-4 shadow shadow-lg"
+                                             :class="{'translate-x-0': mobileSubmenu, 'translate-x-full': !mobileSubmenu}">
+                                            <a class="flex items-center py-3 px-2 block bg-abricot text-white cursor-pointer"
+                                               @click="mobileSubmenu = !mobileSubmenu" >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                                                Retour
+                                            </a>
+                                            <ul class="divide-y divide-gris">
+                                                {% for child in item.children %}
+                                                    <li>
+                                                        <a class="py-3 px-2 block hover:bg-abricot hover:text-white"
+                                                           href="{{ sulu_content_path(child.url) }}" title="{{ child.title }}">
+                                                            {{ child.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+
+                                        </div>
+                                    </li>
+                                {% else %}
+                                    <li class=""><a class="py-3 px-2 block" href="{{ sulu_content_path(item.url, item.webspaceKey) }}" title="{{ item.title }}">{{ item.title }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <!-- /End replace -->
+                    </div>
+                    {% include 'includes/social.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
