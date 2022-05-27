@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>author_details</key>
+    <properties>
+        <property name="firstname"  type="text_line" mandatory="true" colspan="6">
+            <meta>
+                <title>Prénom</title>
+            </meta>
+            <tag name="sulu.rlp.part"/>
+            <params>
+                <param name="headline" value="true"/>
+            </params>
+        </property>
+        <property name="lastname" type="text_line" mandatory="true" colspan="6">
+            <meta>
+                <title>Nom</title>
+            </meta>
+            <tag name="sulu.rlp.part"/>
+            <params>
+                <param name="headline" value="true"/>
+            </params>
+        </property>
+        <property name="routePath" type="route" mandatory="true">
+            <meta>
+                <title>sulu_admin.url</title>
+            </meta>
+            <params>
+                <param name="entity_class" value="App\Entity\Author"/>
+                <param name="route_schema" value="/auteurs/{implode('-', object)}"/>
+            </params>
+        </property>
+
+
+        <property name="cover" type="single_media_selection" >
+            <meta>
+                <title>Image</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+
+        <property name="description" type="text_editor" >
+            <meta>
+                <title>Biographie</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+
+
+    </properties>
+</form>

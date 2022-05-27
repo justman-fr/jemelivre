@@ -23,8 +23,8 @@ class PagesData
         $pages = [];
         $pages[] = [
             'locale' => AppFixtures::LOCALE_FR,
-            'title' => 'Par genre',
-            'url' => '/genre-litteraire',
+            'title' => 'Par thème',
+            'url' => '/theme-litteraire',
             'blocks' => [
                 [
                     'type' => 'text',
@@ -51,13 +51,23 @@ class PagesData
         ];
         $pages[] = [
             'locale' => AppFixtures::LOCALE_FR,
-            'title' => "Sous-menu",
-            'url' => "/genre-litteraire/sous-menu",
-            'parent_path' => "/cmf/website/contents/par-genre",
+            'title' => "Architecture",
+            'url' => "/theme-litteraire/architecture",
+            'parent_path' => "/cmf/website/contents/par-theme",
             'article' => "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a sollicitudin magna. Donec efficitur purus sed purus gravida, eu suscipit justo lobortis. Curabitur vel mollis ex.</p>",
             'navigationContexts' => ['main'],
             'structureType' => 'default'
         ];
+        $pages[] = [
+            'locale' => AppFixtures::LOCALE_FR,
+            'title' => "Art de vivre & spiritualité",
+            'url' => "/theme-litteraire/art-vivre-spiritualite",
+            'parent_path' => "/cmf/website/contents/par-theme",
+            'article' => "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a sollicitudin magna. Donec efficitur purus sed purus gravida, eu suscipit justo lobortis. Curabitur vel mollis ex.</p>",
+            'navigationContexts' => ['main'],
+            'structureType' => 'default'
+        ];
+
         $pages[] = [
             'locale' => AppFixtures::LOCALE_FR,
             'title' => 'Auteurs',
@@ -74,6 +84,24 @@ class PagesData
             'navigationContexts' => ['main'],
             'structureType' => 'contact'
         ];
+
+        $pages[] = [
+            'locale' => AppFixtures::LOCALE_FR,
+            'title' => 'Actualités',
+            'url' => '/news',
+            'contentPresentation' => "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum posuere vehicula urna, vitae sollicitudin massa eleifend vel.</p>
+            <p>Nunc id quam enim. Etiam vitae nisi ut urna blandit viverra sed eget purus. Mauris quis velit quis magna gravida sagittis. Cras scelerisque faucibus turpis a ultricies. Sed nec tellus quam.</p>",
+            'imagePresentation' => [
+                'id' => [$this->getMediaId('no-image.jpg')]
+            ],
+            'coord' => "<h2>Fixture SARL</h2>
+            <p>7 rue du test<br> 26200 Montélimar</p>
+            <p><strong>Tel :</strong> 01.02.03.04.05</p>",
+            'form' => $this->getFormId('Formulaire de contact'),
+            'navigationContexts' => ['main'],
+            'structureType' => 'contact'
+        ];
+
         return $pages;
     }
 

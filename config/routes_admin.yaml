@@ -10,3 +10,9 @@ company.setting_api:
   prefix: /admin/api
   resource: pixel_company.settings_route_controller
   name_prefix: company.
+
+app_author_api:
+  type: rest
+  prefix: /admin/api
+  resource: App\Controller\Admin\AuthorController
+  name_prefix: author.

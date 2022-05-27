@@ -1,8 +1,88 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
+
+
+    <div class="cover w-full h-80 relative">
+        {% if content.cover is defined %}
+            {% set image = sulu_resolve_media(content.cover, 'fr') %}
+            <img src="{{ image.thumbnails['slide'] }}" alt="{{ image.title }}" class="w-full h-full object-cover object-center"/>
+        {% endif %}
+        <div class="absolute inset-0 bg-swirl">
+            <div class="max-w-[120rem] mx-auto flex flex-col justify-center h-full px-4 lg:px-0">
+                <h1 class="sm:mr-28 uppercase text-center text-2xl lg:text-5xl text-white font-bold leading-tight mb-4 top-1/2 drop-shadow-lg">{{ content.title }}</h1>
+            </div>
+        </div>
+
+    </div>
+
     <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 prose">
-        <h1>{{ content.title }}</h1>
+
         {{ content.article|raw }}
+    </div>
+
+    <div property="pages" class="relative max-w-full py-8 px-4 sm:px-6 lg:py-10 lg:px-8  ">
+        <div class="relative max-w-7xl mx-auto">
+
+            <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-4 lg:max-w-none">
+
+                <div class="relative">
+                    <div class="">
+                        <a href="" title="test" class="">
+
+
+                            <img class=" object-cover rounded-lg shadow-lg transition-all hover:scale-105" src="https://damonza.com/wp-content/uploads/portfolio/fiction/The-prophecy_03.jpg" >
+                        </a>
+                    </div>
+                    <a href="" class="block text-lg text-black text-center font-semibold pt-4 px-4 mt-2 mx-0 mb-0 hover:text-peche" >
+                        Test
+                    </a>
+                    <p class="text-base text-black/50 text-center">15/05/2022</p>
+                </div>
+
+                <div class="relative">
+                    <div class="">
+                        <a href="" title="test" class="">
+
+
+                            <img class=" object-cover rounded-lg shadow-lg transition-all hover:scale-105" src="https://images-na.ssl-images-amazon.com/images/I/51uLvJlKpNL._SX321_BO1,204,203,200_.jpg" >
+                        </a>
+                    </div>
+                    <a href="" class="block text-lg text-black text-center font-semibold pt-4 px-4 mt-2 mx-0 mb-0 hover:text-peche" >
+                        Test
+                    </a>
+                    <p class="text-base text-black/50 text-center">15/05/2022</p>
+                </div>
+
+                <div class="relative">
+                    <div class="">
+                        <a href="" title="test" class="">
+
+
+                            <img class="h-64 w-full object-cover rounded-lg shadow-lg transition-all hover:scale-105" src="https://picsum.photos/seed/picsum/300/400" >
+                        </a>
+                    </div>
+                    <a href="" class="block text-lg text-black text-center font-semibold pt-4 px-4 mt-2 mx-0 mb-0 hover:text-peche" >
+                        Test
+                    </a>
+                    <p class="text-base text-black/50 text-center">15/05/2022</p>
+                </div>
+                <div class="relative">
+                    <div class="">
+                        <a href="" title="test" class="">
+
+
+                            <img class="h-64 w-full object-cover rounded-lg shadow-lg transition-all hover:scale-105" src="https://picsum.photos/seed/picsum/300/400" >
+                        </a>
+                    </div>
+                    <a href="" class="block text-lg text-black text-center font-semibold pt-4 px-4 mt-2 mx-0 mb-0 hover:text-peche" >
+                        Test
+                    </a>
+                    <p class="text-base text-black/50 text-center">15/05/2022</p>
+                </div>
+
+
+            </div>
+        </div>
     </div>
 {% endblock %}

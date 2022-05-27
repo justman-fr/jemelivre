@@ -36,6 +36,20 @@
             <tag name="sulu.rlp"/>
         </property>
 
+        <section name="images">
+            <meta>
+                <title lang="fr">Bandeau</title>
+            </meta>
+            <properties>
+                <property name="cover" type="single_media_selection">
+                    <params>
+                        <param name="types" value="image"/>
+                    </params>
+                </property>
+            </properties>
+
+        </section>
+
         <property name="article" type="text_editor">
             <meta>
                 <title lang="en">Article</title>

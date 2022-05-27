@@ -3,6 +3,7 @@
 namespace App\DataFixtures\ORM;
 
 use App\DataFixtures\Data\SettingsData;
+use App\Entity\Author;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -31,6 +32,7 @@ use Sulu\Bundle\MediaBundle\Media\Storage\StorageInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 
 class AppFixtures extends Fixture implements OrderedFixtureInterface
 {
@@ -50,6 +52,7 @@ class AppFixtures extends Fixture implements OrderedFixtureInterface
         $this->loadAccounts($manager);
         $this->loadContacts($manager);
         $this->loadFormContact($manager);
+        $this->loadAuthors($manager);
         $this->loadSocialSettings($manager);
         $this->loadCompanySettings($manager);
 
@@ -63,6 +66,10 @@ class AppFixtures extends Fixture implements OrderedFixtureInterface
         $collections['Pages'] = $this->createCollection(
             $manager,
             ['title' => 'Pages']
+        );
+        $collections['Auteurs'] = $this->createCollection(
+            $manager,
+            ['title' => 'Auteurs']
         );
         return $collections;
     }
@@ -232,6 +239,42 @@ class AppFixtures extends Fixture implements OrderedFixtureInterface
         $manager->persist($contact);
 
         return $contact;
+    }
+
+    /**
+     * @return ContactInterface[]
+     */
+    private function loadAuthors(ObjectManager $manager): array
+    {
+        $authors = [];
+
+        $authors[] = $this->createAuthor(
+            $manager,
+            ['firstName' => 'Régis', 'lastName' => 'Goddyn', 'active' => true],
+            ['firstName' => 'Naomie', 'lastName' => 'Klein', 'active' => true],
+            ['firstName' => 'Olivier', 'lastName' => 'Nerek', 'active' => true],
+            ['firstName' => 'Alain', 'lastName' => 'Damasio', 'active' => true]
+        );
+
+        return $authors;
+    }
+
+    /**
+     * @param mixed[] $data
+     */
+    private function createAuthor(ObjectManager $manager, array $data):void
+    {
+
+        $slug = new AsciiSlugger();
+        $author = new Author();
+        $author->setName($data['firstName'].' '.$data['lastName']);
+        $author->setFirstName($data['firstName']);
+        $author->setIsActive($data['active']);
+        $author->setLastName($data['lastName']);
+        $author->setRoutePath("/auteurs/".$slug->slug(strtolower($data['firstName'])).'-'.$slug->slug(strtolower($data['lastName'])));
+
+        $manager->persist($author);
+
     }
 
     /**

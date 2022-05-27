@@ -25,6 +25,10 @@ module.exports = {
       'sans': ['Inter', ...defaultTheme.fontFamily.sans ],
       'serif': ['Libre Baskerville', ...defaultTheme.fontFamily.serif],
     },
+    backgroundImage: {
+      'hero-pattern': "url('/assets/website/images/pattern.png')",
+      'swirl': "url('/assets/website/images/swirl.png')",
+    },
     extend: {
     },
   },
