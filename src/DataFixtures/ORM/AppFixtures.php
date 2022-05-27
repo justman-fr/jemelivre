@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures\ORM;
 
+use App\DataFixtures\Data\AuthorsData;
 use App\DataFixtures\Data\SettingsData;
 use App\Entity\Author;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -244,19 +245,18 @@ class AppFixtures extends Fixture implements OrderedFixtureInterface
     /**
      * @return ContactInterface[]
      */
-    private function loadAuthors(ObjectManager $manager): array
+    private function loadAuthors(ObjectManager $manager): void
     {
-        $authors = [];
+        $authors = new AuthorsData();
 
-        $authors[] = $this->createAuthor(
-            $manager,
-            ['firstName' => 'Régis', 'lastName' => 'Goddyn', 'active' => true],
-            ['firstName' => 'Naomie', 'lastName' => 'Klein', 'active' => true],
-            ['firstName' => 'Olivier', 'lastName' => 'Nerek', 'active' => true],
-            ['firstName' => 'Alain', 'lastName' => 'Damasio', 'active' => true]
-        );
+        foreach ($authors->getAuthors() as $author) {
+            $this->createAuthor(
+                $manager,
+                $author
+            );
+        }
 
-        return $authors;
+
     }
 
     /**
